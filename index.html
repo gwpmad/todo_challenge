@@ -1,38 +1,53 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="toDoList">
+
 <head>
   <meta charset="utf-8">
   <title>To-do List</title>
-  <!-- <link rel="stylesheet" href="bower_components/bootsrap/dist/css/bootsrap.css"> -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="style.css">
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-resource/angular-resource.js"></script>
   <script src="bower_components/jquery/dist/jquery.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/taskController.js"></script>
-  <script src="js/customFilters.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js" defer></script>
 </head>
 
 <body ng-controller="TaskController as taskCtrl">
   <div>
-    <form class="form-horizontal">
-      <input type="text" ng-model="entry">
-      <button id="addtaskbtn" ng-click="taskCtrl.addTask(entry)">Add Task</button>
+    <form class="form-horizontal" name="addtask">
+      <input name="addtask" type="text" ng-model="entry" placeholder="Add a task" required>
+      <button id="addtaskbtn" ng-click="taskCtrl.addTask(entry); entry = null" ng-disabled="addtask.$invalid">Add Task</button>
     </form>
 
-    <table class="table of tasks">
-      <tr>
-        <td>Task</td>
-        <td>Complete?</td>
-        <td></td>
-      <tr ng-repeat="task in taskCtrl.tasks track by $index">
-        <td>{{task.name}}</td>
-        <td>
-          <input type="checkbox" ng-model="task.complete" id="checkbox">
-        </td>
-        <td>{{task.complete | checkmark}}</td>
-      </tr>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Task</th>
+          <th>Complete?</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="task in taskCtrl.tasks | filter:taskLogic" ng-mouseover="hovertoggle = true" ng-mouseleave="hovertoggle = false" ng-class="{'active' : hovertoggle, 'success' : successtoggle}">
+          <td>{{task.name}}</td>
+          <td>
+            <input type="checkbox" id="checkbox" ng-model="task.complete" ng-click="successtoggle = !successtoggle">
+          </td>
+          <td id="crosstick">{{task.complete | checkmark}}</td>
+        </tr>
+      </tbody>
     </table>
-    <p>{{taskCtrl.incompleteTasks().length}} tasks left</p> 
+    <p id="numberoutstanding" ng-hide="taskCtrl.tasks.length === 0">
+      {{taskCtrl.returnIncompleteTasks().length}} {{taskCtrl.returnIncompleteTasks().length === 1 ? "task" : "tasks"}} outstanding
+    </p>
+    <button id="all" ng-click="taskLogic = {}">All</button>
+    <button id="active" ng-click="taskLogic = {complete: false}">Active</button>
+    <button id="complete" ng-click="taskLogic = {complete: true}">Complete</button>
+    <button id="clearall" ng-click="taskCtrl.tasks = []">Clear All</button>
   </div>
+  <script src="js/app.js"></script>
+  <script src="js/taskController.js"></script>
+  <script src="js/customFilters.js"></script>
 </body>
+
 </html>

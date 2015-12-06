@@ -11,8 +11,17 @@ describe('TaskController', function() {
     expect(ctrl.tasks).toEqual([]);
   });
 
-  it('Returns the number of incomplete tasks left', function() {
+  it('Returns the remaining incomplete tasks', function() {
     ctrl.addTask('example');
-    expect(ctrl.incompleteTasksLeft).toEqual(1);
-  })
+    expect(ctrl.returnIncompleteTasks()).toEqual([{ name: 'example',
+      complete: false }]);
+  });
+
+  it('Returns completed tasks', function() {
+    ctrl.addTask('example');
+    ctrl.tasks[0].complete = true
+    expect(ctrl.returnCompleteTasks()).toEqual([{ name: 'example',
+      complete: true }]);
+  });
+
 });

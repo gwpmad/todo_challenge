@@ -1,6 +1,6 @@
 describe('filter', function() {
 
-  beforeEach(module('toDoListFilters'));
+  beforeEach(module('toDoList'));
 
   describe('checkmark', function() {
 
@@ -9,6 +9,7 @@ describe('filter', function() {
         expect(checkmarkFilter(true)).toBe('\u2713');
         expect(checkmarkFilter(false)).toBe('\u2718');
       }));
-      
+
   });
+
 });
