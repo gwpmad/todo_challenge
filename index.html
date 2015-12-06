@@ -13,11 +13,22 @@
 </head>
 
 <body ng-controller="TaskController as taskCtrl">
-  <div>
-    <form class="form-horizontal" name="addtask">
-      <input name="addtask" type="text" ng-model="entry" placeholder="Add a task" required>
+  <div class = "panel panel-default">
+   <div class = "panel-heading">
+      <h2 class = "panel-title">
+        <center>
+         TASKMASTER
+       </center>
+      </h3>
+   </div>
+
+  <div id='tasksformandtable'>
+    <center>
+      <form class="form-horizontal" name="addtask">
+      <input name="addtask" type="text" ng-model="entry" placeholder="Type your to-dos here!" required>
       <button id="addtaskbtn" ng-click="taskCtrl.addTask(entry); entry = null" ng-disabled="addtask.$invalid">Add Task</button>
     </form>
+  </center>
 
     <table class="table">
       <thead>
@@ -40,6 +51,7 @@
     <p id="numberoutstanding" ng-hide="taskCtrl.tasks.length === 0">
       {{taskCtrl.returnIncompleteTasks().length}} {{taskCtrl.returnIncompleteTasks().length === 1 ? "task" : "tasks"}} outstanding
     </p>
+    
     <button id="all" ng-click="taskLogic = {}">All</button>
     <button id="active" ng-click="taskLogic = {complete: false}">Active</button>
     <button id="complete" ng-click="taskLogic = {complete: true}">Complete</button>
