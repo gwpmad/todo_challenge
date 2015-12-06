@@ -51,7 +51,7 @@
     <p id="numberoutstanding" ng-hide="taskCtrl.tasks.length === 0">
       {{taskCtrl.returnIncompleteTasks().length}} {{taskCtrl.returnIncompleteTasks().length === 1 ? "task" : "tasks"}} outstanding
     </p>
-    
+
     <button id="all" ng-click="taskLogic = {}">All</button>
     <button id="active" ng-click="taskLogic = {complete: false}">Active</button>
     <button id="complete" ng-click="taskLogic = {complete: true}">Complete</button>

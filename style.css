@@ -2,4 +2,8 @@
   font-size: 120%;
 }
 
+.panel-title {
+  font-size: 200%;
+}
+
 #tasksformandtable{ margin-top:20px; }
