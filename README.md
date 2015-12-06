@@ -1,6 +1,8 @@
 To-Do List Challenge
 ===============
 
+I have deployed a copy of this project to Heroku. Click [here](https://to-do-list-gm.herokuapp.com/) to use it.
+
 My Week 8 weekend challenge at Makers Academy was to code a single page to-do list application using AngularJS (or another advanced Javascript toolset). This was my submission.
 
 Here are the user stories that I followed:
@@ -43,6 +45,8 @@ After working all weekend on this project I now feel an awful lot more confident
 
 How to use
 ----------
+A working copy of the project, hosted by Heroku, is available [here](https://to-do-list-gm.herokuapp.com/). However, if you'd like to work with it locally, please follow these steps:
+
 1. Fork this repository and then clone it using `git clone <url>`
 2. cd into the project
 3. Run `npm install` and `bower install`
