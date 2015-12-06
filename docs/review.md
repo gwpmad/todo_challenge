@@ -118,7 +118,7 @@ e.g. rather than:
 // defaultList is declared in a global scope
 var defaultList = { "items": [ ] }
 
-todoApp.controller('ToDoController', function() {
+toDoList.controller('ToDoController', function() {
   // and then its data is mutated within a controller
   this.addItem = function(item) {
     defaultList.items.push(item)
@@ -129,7 +129,7 @@ todoApp.controller('ToDoController', function() {
 declare `defaultList` within the controller:
 
 ```javascript
-todoApp.controller('ToDoController', function() {
+toDoList.controller('ToDoController', function() {
   var defaultList = { "items": [ ] }
 
   this.addItem = function(item) {
